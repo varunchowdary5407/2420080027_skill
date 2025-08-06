@@ -1,0 +1,23 @@
+package first;
+import java.time.LocalTime;
+import java.time.Duration;
+public class office {
+    public static void main(String[] args) {
+        LocalTime officeStart = LocalTime.of(9, 0); 
+        LocalTime officeEnd = LocalTime.of(18, 0);        
+        LocalTime loginTime = LocalTime.of(9, 15); 
+        LocalTime logoutTime = LocalTime.of(17, 45);
+        System.out.println("Office Hours: " + officeStart + " to " + officeEnd);
+        System.out.println("Employee Logged In: " + loginTime);
+        System.out.println("Employee Logged Out: " + logoutTime);
+        if (loginTime.isBefore(officeStart) || loginTime.isAfter(officeEnd)) {
+            System.out.println("Login time is outside office hours!");
+        } else {
+            System.out.println("Login time is within office hours.");
+        }
+        Duration workDuration = Duration.between(loginTime, logoutTime);
+        long hours = workDuration.toHours();
+        long minutes = workDuration.toMinutes() % 60;
+        System.out.println("Total Working Time: " + hours + " hours " + minutes + " minutes");
+    }
+}
